@@ -1,0 +1,14 @@
+.block {
+  float:left;
+  width: 10px;
+  height: 10px;
+  background: #000000;
+}
+
+  .block.block-0 {
+    background: #ffffff;
+  }
+
+  .block.block-2 {
+    background: #ffcc00;
+  }

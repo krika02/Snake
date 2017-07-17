@@ -1,0 +1,12 @@
+#snake-game {
+  font-family: sans-serif;
+  width: 250px;
+}
+
+  #snake-game .game-field{
+    height: 250px;
+  }
+
+  #snake-game .header .score{
+    float:right;
+  }
