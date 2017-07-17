@@ -1,9 +1,9 @@
-import gc from '../constants/gameConstants';
+import gameConstants from '../constants/game';
 
 const isGameOver = (state, newPosition) => {
 	const headPosition = newPosition[0];
 
-	if (state.field[headPosition.y][headPosition.x] === gc.BLOCK) {
+	if (state.field[headPosition.y][headPosition.x] === gameConstants.BLOCK) {
 		return true;
 	}
 
@@ -19,7 +19,7 @@ const random = max => Math.floor((Math.random() * max) + 1);
 module.exports = (state = {}, action) => {
 	switch (action.type) {
 
-		case gc.GAME_UPDATE: {
+		case gameConstants.GAME_UPDATE: {
 			if (!state.running) {
 				return state;
 			}
@@ -35,25 +35,25 @@ module.exports = (state = {}, action) => {
 			const newPosition = [...state.position];
 
 			switch (state.direction) {
-				case gc.DIRECTION_UP:
+				case gameConstants.DIRECTION_UP:
 					newPosition.unshift({
 						y: headPosition.y - 1,
 						x: headPosition.x,
 					});
 					break;
-				case gc.DIRECTION_DOWN:
+				case gameConstants.DIRECTION_DOWN:
 					newPosition.unshift({
 						y: headPosition.y + 1,
 						x: headPosition.x,
 					});
 					break;
-				case gc.DIRECTION_LEFT:
+				case gameConstants.DIRECTION_LEFT:
 					newPosition.unshift({
 						y: headPosition.y,
 						x: headPosition.x - 1,
 					});
 					break;
-				case gc.DIRECTION_RIGHT:
+				case gameConstants.DIRECTION_RIGHT:
 					newPosition.unshift({
 						y: headPosition.y,
 						x: headPosition.x + 1,
@@ -66,7 +66,7 @@ module.exports = (state = {}, action) => {
 
 			if (state.length < newPosition.length) {
 				const lastBlock = newPosition.slice(-1).pop();
-				newField[lastBlock.y][lastBlock.x] = gc.SPACE;
+				newField[lastBlock.y][lastBlock.x] = gameConstants.SPACE;
 				newPosition.splice(-1, 1);
 			}
 
@@ -77,19 +77,19 @@ module.exports = (state = {}, action) => {
 				if (powerUp !== null
 				&& newHeadPosition.x === powerUp.x
 				&& newHeadPosition.y === powerUp.y) {
-					score += gc.POWER_UP_SCORE;
+					score += gameConstants.POWER_UP_SCORE;
 					length += 2;
 					powerUp = null;
 				}
 
 				if (powerUp === null) {
-					let x = random(gc.GAME_COLS - 1);
-					let y = random(gc.GAME_ROWS - 1);
+					let x = random(gameConstants.GAME_COLS - 1);
+					let y = random(gameConstants.GAME_ROWS - 1);
 
-					while (newField[y][x] === gc.BLOCK
+					while (newField[y][x] === gameConstants.BLOCK
 						|| (newHeadPosition.x === x && newHeadPosition.y === y)) {
-						x = random(gc.GAME_COLS - 1);
-						y = random(gc.GAME_ROWS - 1);
+						x = random(gameConstants.GAME_COLS - 1);
+						y = random(gameConstants.GAME_ROWS - 1);
 					}
 
 					powerUp = {
@@ -98,12 +98,12 @@ module.exports = (state = {}, action) => {
 					};
 				}
 
-				newField[powerUp.y][powerUp.x] = gc.POWER_UP;
+				newField[powerUp.y][powerUp.x] = gameConstants.POWER_UP;
 			}
 
 			for (let i = 0; i < newPosition.length; i += 1) {
 				const snakeBlock = newPosition[i];
-				newField[snakeBlock.y][snakeBlock.x] = gc.BLOCK;
+				newField[snakeBlock.y][snakeBlock.x] = gameConstants.BLOCK;
 			}
 
 			return Object.assign({}, state, {
@@ -116,46 +116,51 @@ module.exports = (state = {}, action) => {
 				field: newField });
 		}
 
-		case gc.DIRECTION_UP:
-		case gc.DIRECTION_DOWN:
-		case gc.DIRECTION_LEFT:
-		case gc.DIRECTION_RIGHT:
+		case gameConstants.DIRECTION_UP:
+		case gameConstants.DIRECTION_DOWN:
+		case gameConstants.DIRECTION_LEFT:
+		case gameConstants.DIRECTION_RIGHT:
 			if (!state.running) {
 				return state;
 			}
 			if (state.direction === action.type
-				|| (state.direction === gc.DIRECTION_UP && action.type === gc.DIRECTION_DOWN)
-				|| (state.direction === gc.DIRECTION_DOWN && action.type === gc.DIRECTION_UP)
-				|| (state.direction === gc.DIRECTION_LEFT && action.type === gc.DIRECTION_RIGHT)
-				|| (state.direction === gc.DIRECTION_RIGHT && action.type === gc.DIRECTION_LEFT)) {
+				|| (state.direction === gameConstants.DIRECTION_UP &&
+						action.type === gameConstants.DIRECTION_DOWN)
+				|| (state.direction === gameConstants.DIRECTION_DOWN &&
+						action.type === gameConstants.DIRECTION_UP)
+				|| (state.direction === gameConstants.DIRECTION_LEFT &&
+						action.type === gameConstants.DIRECTION_RIGHT)
+				|| (state.direction === gameConstants.DIRECTION_RIGHT &&
+						action.type === gameConstants.DIRECTION_LEFT)) {
 				return state;
 			}
 			return Object.assign({}, state, { direction: action.type });
 
-		case gc.GAME_NEW: {
+		case gameConstants.GAME_NEW: {
 			if (state.running) {
 				return state;
 			}
 			const field = [];
-			for (let y = 0; y < gc.GAME_ROWS; y += 1) {
+			for (let y = 0; y < gameConstants.GAME_ROWS; y += 1) {
 				field[y] = [];
-				for (let x = 0; x < gc.GAME_COLS; x += 1) {
-					if (y === 0 || y === gc.GAME_ROWS - 1 || x === 0 || x === gc.GAME_COLS - 1) {
-						field[y][x] = gc.BLOCK;
+				for (let x = 0; x < gameConstants.GAME_COLS; x += 1) {
+					if (y === 0 || y === gameConstants.GAME_ROWS - 1
+						|| x === 0 || x === gameConstants.GAME_COLS - 1) {
+						field[y][x] = gameConstants.BLOCK;
 					} else {
-						field[y][x] = gc.SPACE;
+						field[y][x] = gameConstants.SPACE;
 					}
 				}
 			}
 
-			return Object.assign({}, gc.GAME_INITIAL_STATE, {
+			return Object.assign({}, gameConstants.GAME_INITIAL_STATE, {
 				field,
 				running: true,
-				direction: gc.DIRECTION_LEFT,
+				direction: gameConstants.DIRECTION_LEFT,
 			});
 		}
 
-		case gc.GAME_OVER:
+		case gameConstants.GAME_OVER:
 			return Object.assign({}, state, {
 				gameOver: true,
 				running: false,

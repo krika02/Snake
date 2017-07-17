@@ -4,9 +4,9 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import App from './components/App/App';
 import reducer from './reducers';
-import gc from './constants/gameConstants';
+import gameConstants from './constants/game';
 
-const store = createStore(reducer, gc.COMBINED_INITIAL_STATE);
+const store = createStore(reducer, gameConstants.COMBINED_INITIAL_STATE);
 
 render(
 	<Provider store={store}>

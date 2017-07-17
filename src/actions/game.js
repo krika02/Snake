@@ -1,12 +1,12 @@
-import gc from '../constants/gameConstants';
+import gameConstants from '../constants/game';
 
 const game = {
-	moveUp: { type: gc.DIRECTION_UP },
-	moveDown: { type: gc.DIRECTION_DOWN },
-	moveLeft: { type: gc.DIRECTION_LEFT },
-	moveRight: { type: gc.DIRECTION_RIGHT },
-	newGame: { type: gc.GAME_NEW },
-	update: { type: gc.GAME_UPDATE },
+	moveUp: { type: gameConstants.DIRECTION_UP },
+	moveDown: { type: gameConstants.DIRECTION_DOWN },
+	moveLeft: { type: gameConstants.DIRECTION_LEFT },
+	moveRight: { type: gameConstants.DIRECTION_RIGHT },
+	newGame: { type: gameConstants.GAME_NEW },
+	update: { type: gameConstants.GAME_UPDATE },
 };
 
 export default game;

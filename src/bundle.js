@@ -11769,13 +11769,13 @@ var _reducers = __webpack_require__(238);
 
 var _reducers2 = _interopRequireDefault(_reducers);
 
-var _gameConstants = __webpack_require__(25);
+var _game = __webpack_require__(25);
 
-var _gameConstants2 = _interopRequireDefault(_gameConstants);
+var _game2 = _interopRequireDefault(_game);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var store = (0, _redux.createStore)(_reducers2.default, _gameConstants2.default.COMBINED_INITIAL_STATE);
+var store = (0, _redux.createStore)(_reducers2.default, _game2.default.COMBINED_INITIAL_STATE);
 
 (0, _reactDom.render)(_react2.default.createElement(
 	_reactRedux.Provider,
@@ -25280,15 +25280,15 @@ var _game = __webpack_require__(237);
 
 var _game2 = _interopRequireDefault(_game);
 
-var _gameConstants = __webpack_require__(25);
+var _game3 = __webpack_require__(25);
 
-var _gameConstants2 = _interopRequireDefault(_gameConstants);
+var _game4 = _interopRequireDefault(_game3);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var keydownActive = void 0;
 
-var boardKeys = Object.keys(_gameConstants2.default.KEY_COMMANDS).map(function (e) {
+var boardKeys = Object.keys(_game4.default.KEY_COMMANDS).map(function (e) {
 	return parseInt(e, 10);
 });
 
@@ -25311,26 +25311,26 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 			if (e.metaKey === true || boardKeys.indexOf(e.keyCode) === -1) {
 				return;
 			}
-			var type = _gameConstants2.default.KEY_COMMANDS[e.keyCode];
+			var type = _game4.default.KEY_COMMANDS[e.keyCode];
 			if (type === keydownActive) {
 				return;
 			}
 			keydownActive = type;
 
 			switch (type) {
-				case _gameConstants2.default.KEYS.ENTER:
+				case _game4.default.KEYS.ENTER:
 					dispatch(_game2.default.newGame);
 					break;
-				case _gameConstants2.default.KEYS.UP:
+				case _game4.default.KEYS.UP:
 					dispatch(_game2.default.moveUp);
 					break;
-				case _gameConstants2.default.KEYS.DOWN:
+				case _game4.default.KEYS.DOWN:
 					dispatch(_game2.default.moveDown);
 					break;
-				case _gameConstants2.default.KEYS.LEFT:
+				case _game4.default.KEYS.LEFT:
 					dispatch(_game2.default.moveLeft);
 					break;
-				case _gameConstants2.default.KEYS.RIGHT:
+				case _game4.default.KEYS.RIGHT:
 					dispatch(_game2.default.moveRight);
 					break;
 				default:
@@ -25375,9 +25375,9 @@ var _Block = __webpack_require__(231);
 
 var _Block2 = _interopRequireDefault(_Block);
 
-var _gameConstants = __webpack_require__(25);
+var _game = __webpack_require__(25);
 
-var _gameConstants2 = _interopRequireDefault(_gameConstants);
+var _game2 = _interopRequireDefault(_game);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -25401,7 +25401,7 @@ var GameField = function (_React$Component) {
 	_createClass(GameField, [{
 		key: 'componentDidMount',
 		value: function componentDidMount() {
-			this.timer = window.setInterval(this.props.update, _gameConstants2.default.GAME_SPEED);
+			this.timer = window.setInterval(this.props.update, _game2.default.GAME_SPEED);
 			document.addEventListener('keyup', this.props.keyUp, true);
 			document.addEventListener('keydown', this.props.keyDown, true);
 			document.addEventListener('keyup', this.props.keyDown, true);
@@ -25708,19 +25708,19 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _gameConstants = __webpack_require__(25);
+var _game = __webpack_require__(25);
 
-var _gameConstants2 = _interopRequireDefault(_gameConstants);
+var _game2 = _interopRequireDefault(_game);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var game = {
-	moveUp: { type: _gameConstants2.default.DIRECTION_UP },
-	moveDown: { type: _gameConstants2.default.DIRECTION_DOWN },
-	moveLeft: { type: _gameConstants2.default.DIRECTION_LEFT },
-	moveRight: { type: _gameConstants2.default.DIRECTION_RIGHT },
-	newGame: { type: _gameConstants2.default.GAME_NEW },
-	update: { type: _gameConstants2.default.GAME_UPDATE }
+	moveUp: { type: _game2.default.DIRECTION_UP },
+	moveDown: { type: _game2.default.DIRECTION_DOWN },
+	moveLeft: { type: _game2.default.DIRECTION_LEFT },
+	moveRight: { type: _game2.default.DIRECTION_RIGHT },
+	newGame: { type: _game2.default.GAME_NEW },
+	update: { type: _game2.default.GAME_UPDATE }
 };
 
 exports.default = game;
@@ -25757,9 +25757,9 @@ exports.default = combinedReducer;
 "use strict";
 
 
-var _gameConstants = __webpack_require__(25);
+var _game = __webpack_require__(25);
 
-var _gameConstants2 = _interopRequireDefault(_gameConstants);
+var _game2 = _interopRequireDefault(_game);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -25768,7 +25768,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 var isGameOver = function isGameOver(state, newPosition) {
 	var headPosition = newPosition[0];
 
-	if (state.field[headPosition.y][headPosition.x] === _gameConstants2.default.BLOCK) {
+	if (state.field[headPosition.y][headPosition.x] === _game2.default.BLOCK) {
 		return true;
 	}
 
@@ -25791,7 +25791,7 @@ module.exports = function () {
 
 	switch (action.type) {
 
-		case _gameConstants2.default.GAME_UPDATE:
+		case _game2.default.GAME_UPDATE:
 			{
 				if (!state.running) {
 					return state;
@@ -25808,25 +25808,25 @@ module.exports = function () {
 				var newPosition = [].concat(_toConsumableArray(state.position));
 
 				switch (state.direction) {
-					case _gameConstants2.default.DIRECTION_UP:
+					case _game2.default.DIRECTION_UP:
 						newPosition.unshift({
 							y: headPosition.y - 1,
 							x: headPosition.x
 						});
 						break;
-					case _gameConstants2.default.DIRECTION_DOWN:
+					case _game2.default.DIRECTION_DOWN:
 						newPosition.unshift({
 							y: headPosition.y + 1,
 							x: headPosition.x
 						});
 						break;
-					case _gameConstants2.default.DIRECTION_LEFT:
+					case _game2.default.DIRECTION_LEFT:
 						newPosition.unshift({
 							y: headPosition.y,
 							x: headPosition.x - 1
 						});
 						break;
-					case _gameConstants2.default.DIRECTION_RIGHT:
+					case _game2.default.DIRECTION_RIGHT:
 						newPosition.unshift({
 							y: headPosition.y,
 							x: headPosition.x + 1
@@ -25840,7 +25840,7 @@ module.exports = function () {
 
 				if (state.length < newPosition.length) {
 					var lastBlock = newPosition.slice(-1).pop();
-					newField[lastBlock.y][lastBlock.x] = _gameConstants2.default.SPACE;
+					newField[lastBlock.y][lastBlock.x] = _game2.default.SPACE;
 					newPosition.splice(-1, 1);
 				}
 
@@ -25849,18 +25849,18 @@ module.exports = function () {
 					running = false;
 				} else {
 					if (powerUp !== null && newHeadPosition.x === powerUp.x && newHeadPosition.y === powerUp.y) {
-						score += _gameConstants2.default.POWER_UP_SCORE;
+						score += _game2.default.POWER_UP_SCORE;
 						length += 2;
 						powerUp = null;
 					}
 
 					if (powerUp === null) {
-						var x = random(_gameConstants2.default.GAME_COLS - 1);
-						var y = random(_gameConstants2.default.GAME_ROWS - 1);
+						var x = random(_game2.default.GAME_COLS - 1);
+						var y = random(_game2.default.GAME_ROWS - 1);
 
-						while (newField[y][x] === _gameConstants2.default.BLOCK || newHeadPosition.x === x && newHeadPosition.y === y) {
-							x = random(_gameConstants2.default.GAME_COLS - 1);
-							y = random(_gameConstants2.default.GAME_ROWS - 1);
+						while (newField[y][x] === _game2.default.BLOCK || newHeadPosition.x === x && newHeadPosition.y === y) {
+							x = random(_game2.default.GAME_COLS - 1);
+							y = random(_game2.default.GAME_ROWS - 1);
 						}
 
 						powerUp = {
@@ -25869,12 +25869,12 @@ module.exports = function () {
 						};
 					}
 
-					newField[powerUp.y][powerUp.x] = _gameConstants2.default.POWER_UP;
+					newField[powerUp.y][powerUp.x] = _game2.default.POWER_UP;
 				}
 
 				for (var i = 0; i < newPosition.length; i += 1) {
 					var snakeBlock = newPosition[i];
-					newField[snakeBlock.y][snakeBlock.x] = _gameConstants2.default.BLOCK;
+					newField[snakeBlock.y][snakeBlock.x] = _game2.default.BLOCK;
 				}
 
 				return Object.assign({}, state, {
@@ -25887,43 +25887,43 @@ module.exports = function () {
 					field: newField });
 			}
 
-		case _gameConstants2.default.DIRECTION_UP:
-		case _gameConstants2.default.DIRECTION_DOWN:
-		case _gameConstants2.default.DIRECTION_LEFT:
-		case _gameConstants2.default.DIRECTION_RIGHT:
+		case _game2.default.DIRECTION_UP:
+		case _game2.default.DIRECTION_DOWN:
+		case _game2.default.DIRECTION_LEFT:
+		case _game2.default.DIRECTION_RIGHT:
 			if (!state.running) {
 				return state;
 			}
-			if (state.direction === action.type || state.direction === _gameConstants2.default.DIRECTION_UP && action.type === _gameConstants2.default.DIRECTION_DOWN || state.direction === _gameConstants2.default.DIRECTION_DOWN && action.type === _gameConstants2.default.DIRECTION_UP || state.direction === _gameConstants2.default.DIRECTION_LEFT && action.type === _gameConstants2.default.DIRECTION_RIGHT || state.direction === _gameConstants2.default.DIRECTION_RIGHT && action.type === _gameConstants2.default.DIRECTION_LEFT) {
+			if (state.direction === action.type || state.direction === _game2.default.DIRECTION_UP && action.type === _game2.default.DIRECTION_DOWN || state.direction === _game2.default.DIRECTION_DOWN && action.type === _game2.default.DIRECTION_UP || state.direction === _game2.default.DIRECTION_LEFT && action.type === _game2.default.DIRECTION_RIGHT || state.direction === _game2.default.DIRECTION_RIGHT && action.type === _game2.default.DIRECTION_LEFT) {
 				return state;
 			}
 			return Object.assign({}, state, { direction: action.type });
 
-		case _gameConstants2.default.GAME_NEW:
+		case _game2.default.GAME_NEW:
 			{
 				if (state.running) {
 					return state;
 				}
 				var field = [];
-				for (var _y = 0; _y < _gameConstants2.default.GAME_ROWS; _y += 1) {
+				for (var _y = 0; _y < _game2.default.GAME_ROWS; _y += 1) {
 					field[_y] = [];
-					for (var _x2 = 0; _x2 < _gameConstants2.default.GAME_COLS; _x2 += 1) {
-						if (_y === 0 || _y === _gameConstants2.default.GAME_ROWS - 1 || _x2 === 0 || _x2 === _gameConstants2.default.GAME_COLS - 1) {
-							field[_y][_x2] = _gameConstants2.default.BLOCK;
+					for (var _x2 = 0; _x2 < _game2.default.GAME_COLS; _x2 += 1) {
+						if (_y === 0 || _y === _game2.default.GAME_ROWS - 1 || _x2 === 0 || _x2 === _game2.default.GAME_COLS - 1) {
+							field[_y][_x2] = _game2.default.BLOCK;
 						} else {
-							field[_y][_x2] = _gameConstants2.default.SPACE;
+							field[_y][_x2] = _game2.default.SPACE;
 						}
 					}
 				}
 
-				return Object.assign({}, _gameConstants2.default.GAME_INITIAL_STATE, {
+				return Object.assign({}, _game2.default.GAME_INITIAL_STATE, {
 					field: field,
 					running: true,
-					direction: _gameConstants2.default.DIRECTION_LEFT
+					direction: _game2.default.DIRECTION_LEFT
 				});
 			}
 
-		case _gameConstants2.default.GAME_OVER:
+		case _game2.default.GAME_OVER:
 			return Object.assign({}, state, {
 				gameOver: true,
 				running: false

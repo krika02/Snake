@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Block from '../Block/Block';
-import gc from '../../constants/gameConstants';
+import gameConstants from '../../constants/game';
 
 require('./GameField.css');
 
 class GameField extends React.Component {
 
 	componentDidMount() {
-		this.timer = window.setInterval(this.props.update, gc.GAME_SPEED);
+		this.timer = window.setInterval(this.props.update, gameConstants.GAME_SPEED);
 		document.addEventListener('keyup', this.props.keyUp, true);
 		document.addEventListener('keydown', this.props.keyDown, true);
 		document.addEventListener('keyup', this.props.keyDown, true);
