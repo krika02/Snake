@@ -16,3 +16,4 @@ module.exports = {
 		extensions: ['.jsx', '.js', '.json'],
 	},
 };
+
