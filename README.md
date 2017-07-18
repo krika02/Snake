@@ -1,4 +1,4 @@
-# Snake Game built with React and Redux
+# Snake Game built with React and Redux (ES6/2015)
 
 ## Live Demo
 http://output.jsbin.com/taxuhecixo/1
