@@ -160,12 +160,6 @@ module.exports = (state = {}, action) => {
 			});
 		}
 
-		case gameConstants.GAME_OVER:
-			return Object.assign({}, state, {
-				gameOver: true,
-				running: false,
-			});
-
 		default:
 			return state;
 
