@@ -3,6 +3,8 @@
 ## Live Demo
 http://output.jsbin.com/lufibec
 
+Controls: Arrow keys
+
 ## Start
 To start the application simply open /src/index.html in your browser.
 
