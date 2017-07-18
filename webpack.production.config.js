@@ -1,4 +1,5 @@
 const path = require('path');
+const BabiliPlugin = require('babili-webpack-plugin');
 
 module.exports = {
 	entry: './src/main.jsx',
@@ -15,4 +16,7 @@ module.exports = {
 	resolve: {
 		extensions: ['.jsx', '.js', '.json'],
 	},
+	plugins: [
+		new BabiliPlugin(),
+	],
 };
