@@ -1,7 +1,7 @@
 # Snake Game built with React and Redux
 
 ## Live Demo
-http://output.jsbin.com/raqajisebe
+http://output.jsbin.com/taxuhecixo/1
 
 ## Start
 To start the application simply open /src/index.html in your browser.
