@@ -1,6 +1,6 @@
 import gameConstants from '../constants/game';
 
-const game = {
+const gameActions = {
 	moveUp: { type: gameConstants.DIRECTION_UP },
 	moveDown: { type: gameConstants.DIRECTION_DOWN },
 	moveLeft: { type: gameConstants.DIRECTION_LEFT },
@@ -9,4 +9,4 @@ const game = {
 	update: { type: gameConstants.GAME_UPDATE },
 };
 
-export default game;
+export default gameActions;
