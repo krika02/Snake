@@ -1,10 +1,10 @@
-import actions from '../actions/game';
-import reducer from './game';
+import gameActions from '../actions/game';
+import gameReducer from './game';
 import gameConstants from '../constants/game';
 
 describe('reducers/game newGame & update', () => {
 
-  let state = reducer(undefined, actions.newGame);
+  let state = gameReducer(undefined, gameActions.newGame);
 
 	it('newGame should return correct state', () => {
 		expect(state.running === true);
@@ -14,7 +14,7 @@ describe('reducers/game newGame & update', () => {
 	});
 
   let oldState = state;
-  state = reducer(state, actions.update);
+  state = gameReducer(state, gameActions.update);
 
   it('update should return correct state', () => {
 		expect(state.running === true);
@@ -26,7 +26,7 @@ describe('reducers/game newGame & update', () => {
 	});
 
   oldState = state;
-  state = reducer(state, actions.moveUp);
+  state = gameReducer(state, gameActions.moveUp);
 
   it('moveUp should return correct state', () => {
     expect(state.running === true);
@@ -34,7 +34,7 @@ describe('reducers/game newGame & update', () => {
   });
 
   oldState = state;
-  state = reducer(state, actions.newGame);
+  state = gameReducer(state, gameActions.newGame);
 
   it('newGame should return same state (not possible while game is running)', () => {
     expect(oldState).toEqual(state);
