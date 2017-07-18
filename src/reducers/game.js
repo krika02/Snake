@@ -3,9 +3,13 @@ import gameConstants from '../constants/game';
 const isGameOver = (state, newPosition) => {
 	const headPosition = newPosition[0];
 
+	// Check if first snake block is colliding with a block
+
 	if (state.field[headPosition.y][headPosition.x] === gameConstants.BLOCK) {
 		return true;
 	}
+
+	// Check if first snake block is colliding with any snake blocks
 
 	if (newPosition.filter(p => p.x === headPosition.x && p.y === headPosition.y).length > 1) {
 		return true;
@@ -33,6 +37,8 @@ module.exports = (state = {}, action) => {
 			const newField = [...state.field];
 			const headPosition = state.position[0];
 			const newPosition = [...state.position];
+
+			// Get next position depending on direction
 
 			switch (state.direction) {
 				case gameConstants.DIRECTION_UP:
@@ -64,6 +70,9 @@ module.exports = (state = {}, action) => {
 
 			const newHeadPosition = newPosition[0];
 
+			// If snake legnth is longer than expected (state.length),
+			// then remove last block from snake
+
 			if (state.length < newPosition.length) {
 				const lastBlock = newPosition.slice(-1).pop();
 				newField[lastBlock.y][lastBlock.x] = gameConstants.SPACE;
@@ -71,18 +80,25 @@ module.exports = (state = {}, action) => {
 			}
 
 			if (isGameOver(state, newPosition)) {
+				// Game is over, set game over state
+
 				gameOver = true;
 				running = false;
 			} else {
 				if (powerUp !== null
 				&& newHeadPosition.x === powerUp.x
 				&& newHeadPosition.y === powerUp.y) {
+					// Snake is colliding with power up
+					// Add score, length and remove power up
+
 					score += gameConstants.POWER_UP_SCORE;
 					length += 2;
 					powerUp = null;
 				}
 
 				if (powerUp === null) {
+					// Create a new power up in an empty position
+
 					let x = random(gameConstants.GAME_COLS - 1);
 					let y = random(gameConstants.GAME_ROWS - 1);
 
@@ -100,6 +116,8 @@ module.exports = (state = {}, action) => {
 
 				newField[powerUp.y][powerUp.x] = gameConstants.POWER_UP;
 			}
+
+			// Update snake blocks in the field
 
 			for (let i = 0; i < newPosition.length; i += 1) {
 				const snakeBlock = newPosition[i];
@@ -140,6 +158,9 @@ module.exports = (state = {}, action) => {
 			if (state.running) {
 				return state;
 			}
+
+			// Generate a new game field with blocks and spaces
+
 			const field = [];
 			for (let y = 0; y < gameConstants.GAME_ROWS; y += 1) {
 				field[y] = [];
