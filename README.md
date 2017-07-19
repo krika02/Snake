@@ -16,3 +16,4 @@ Install `yarn`, read how [here](https://yarnpkg.com/en/docs/install).
 
 ## Test
 To run tests: yarn test
+
