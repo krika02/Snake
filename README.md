@@ -1,7 +1,6 @@
 # Snake Game built with React and Redux (ES6/2015)
 
-## Live Demo
-http://output.jsbin.com/lufibec
+Live demo can be found <a href="http://output.jsbin.com/lufibec" target="_blanc">here</a>
 
 Controls: Arrow keys
 
