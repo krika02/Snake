@@ -4,9 +4,6 @@ Live demo can be found <a href="http://output.jsbin.com/lufibec" target="_blanc"
 
 Controls: Arrow keys
 
-## Start
-To start the application simply open /src/index.html in your browser.
-
 ## Installation
 Install `yarn`, read how [here](https://yarnpkg.com/en/docs/install).
 
